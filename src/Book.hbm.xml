@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+          <hibernate-mapping>
+          <class name="classes" table="Books">
+          <id name="bookId">
+          <generator class="assigned"></generator>
+          </id>
+          <property name="author"></property>
+          <property name="publication"></property>
+          <property name="isbn"></property>
+          <property name="language"></property>
+          <property name="quantity"></property>
+          <property name="dateOfPurchase"></property>
+          <property name="price"></property>
+          <property name="image"></property>
+          <property name="numberOfPages"></property>
+          <property name="bindingType"></property>
+          
+          </class>
+          
+          </hibernate-mapping>
