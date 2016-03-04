@@ -1,6 +1,7 @@
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,19 +20,20 @@ public class Main
 		Session s=factory.openSession();
 		Transaction t=s.beginTransaction();
 		
-		arr=Books.al;
-		Books b[]=new Books[arr.size()];
-				for(int i=0;i<arr.size();i++)
-				{
-					b[i]=new Books();
-					//b[i].setAuthor(author);=
-					
-				}
 		
-		//s.persist(u);
+		int cnt=ReadExcelFileToList.cnt;
+		Books b[]=ReadExcelFileToList.b;
+		for(int i=0;i<b.length;i++)
+		{
+			if(b[i]!=null){
+			s.persist(b[i]);
+			}
+			
+		}
 		
 		t.commit();
 		System.out.println("saved");
+	
 		s.close();
 	}
 
