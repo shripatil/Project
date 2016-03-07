@@ -21,7 +21,7 @@ class ReadExcelFileToList {
     public static List<Books> readExcelData(String fileName) {
         List<Books> countriesList = new ArrayList<Books>();
         ArrayList<String> al=new ArrayList<>();
-     
+     int i=0;
          
         try {
             //Create the input stream from the xlsx/xls file
@@ -39,10 +39,10 @@ class ReadExcelFileToList {
             int numberOfSheets = workbook.getNumberOfSheets();
              
             //loop through each of the sheets
-            for(int i=0; i < numberOfSheets; i++){
+            for(int i1=0; i1 < numberOfSheets; i1++){
                  
                 //Get the nth sheet from the workbook
-                Sheet sheet = workbook.getSheetAt(i);
+                Sheet sheet = workbook.getSheetAt(i1);
                  
                 //every sheet has rows, iterate over them
                 Iterator<Row> rowIterator = sheet.iterator();
@@ -61,9 +61,11 @@ class ReadExcelFileToList {
                     {
                         //Get the Cell object
                         Cell cell = cellIterator.next();
-                         
+                        if(cnt==0)
+                        System.out.println(cell.getStringCellValue());
                         //check the cell type and process accordingly
                         switch(cell.getCellType()){
+                        
                         case Cell.CELL_TYPE_BLANK:
                         	if(cnt>0)
                         	al.add(null);
@@ -78,23 +80,27 @@ class ReadExcelFileToList {
                         	break;
                        
                         case Cell.CELL_TYPE_STRING:
+                        	if(cnt>0){
                             if(shortCode.equalsIgnoreCase("")){
                                 shortCode = cell.getStringCellValue().trim();
+                                al.add(shortCode);
+                                
                             }else if(name.equalsIgnoreCase("")){
                                 //2nd column
                                 name = cell.getStringCellValue().trim();
+                                al.add(name);
                             }else{
-                            	System.out.println("Inside else");
+                            	//System.out.println("Inside else");
                                 //random data, leave it
                                // System.out.println("Random data::"+cell.getStringCellValue());
-                            	if(cnt>0){
+                            	
                             		//System.out.println("Inside cnt block");
                             		String s=cell.getStringCellValue();
-                            		System.out.println(s);
+                            		//System.out.println(s);
                             		
                             			al.add(s);
                             		
-                            	System.out.println(al);
+                            	//System.out.println(al);
                             }
                             		//b[i].setBookId(bookId);
                             	
@@ -102,20 +108,24 @@ class ReadExcelFileToList {
                             
                             break;
                         case Cell.CELL_TYPE_NUMERIC:
-                            System.out.println("Random data::"+cell.getNumericCellValue());
+                            //System.out.println("Random data::"+cell.getNumericCellValue());
                             al.add(""+cell.getNumericCellValue());
                             break;
                             
                         
                         }	
-                       
+                       System.out.println(al);
                     
                     } //end of cell iterator
                     /*Country c = new Country(name, shortCode);
                     countriesList.add(c);*/
+                    String val=null;
                     if(cnt>0){
+                    	val=al.get(0);
+                    }
+                    if(cnt>0 && val!=null){
                         b[i]=new Books();
-                        b[i].setBookId(al.get(0));
+                        b[i].setBookId(val);
                         b[i].setAuthor(al.get(1));
                         b[i].setPublication(al.get(2));
                         b[i].setIsbn(al.get(3));
@@ -126,8 +136,10 @@ class ReadExcelFileToList {
                         b[i].setImage(al.get(8));
                         b[i].setNumberOfPages(al.get(9));
                         b[i].setBindingType(al.get(10));
+                        System.out.println(b[i].getBookId());
                         i++;
                         }
+                    al.clear();
                     cnt++;
                 } //end of rows iterator
                  
@@ -146,13 +158,13 @@ class ReadExcelFileToList {
     }
  
     public static void main(String args[]){
-        List<Books> list = readExcelData("/home/pepl-staff003/Downloads/catalogue1.xlsx");
+        List<Books> list = readExcelData("/home/pepl-staff-001/Downloads/catalogueNEW.xlsx");
+       // Main m=new Main();
+        Main.main(null);
       //  System.out.println("Country List\n"+list);
     }
  
 }
-
-
 
 
 
