@@ -161,7 +161,7 @@ class ReadExcelFileToList {
         List<Books> list = readExcelData("/home/pepl-staff-001/Downloads/catalogueNEW.xlsx");
        // Main m=new Main();
         Main.main(null);
-      //  System.out.println("Country List\n"+list);
+       System.out.println("Country List\n"+list);
     }
  
 }
