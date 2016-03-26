@@ -68,7 +68,7 @@ class ReadExcelFileToList {
                         
                         case Cell.CELL_TYPE_BLANK:
                         	if(cnt>0)
-                        	al.add(null);
+                        	al.add("null");
                         	break;
                         case Cell.CELL_TYPE_FORMULA:
                         	if(cnt>0)
@@ -83,21 +83,36 @@ class ReadExcelFileToList {
                         	if(cnt>0){
                             if(shortCode.equalsIgnoreCase("")){
                                 shortCode = cell.getStringCellValue().trim();
-                                al.add(shortCode);
+                                if(shortCode.equals("") || shortCode==null || shortCode.equals(" "))
+								{
+                                al.add("null");
+                                }
+                                else
+                                	al.add(shortCode);
                                 
                             }else if(name.equalsIgnoreCase("")){
                                 //2nd column
                                 name = cell.getStringCellValue().trim();
-                                al.add(name);
+                                if(name.equals("") || name==null || name.equals(" "))
+								{
+                                al.add("null");
+                                }
+                                else
+                                	al.add(name);
+                                
                             }else{
                             	//System.out.println("Inside else");
                                 //random data, leave it
                                // System.out.println("Random data::"+cell.getStringCellValue());
-                            	
                             		//System.out.println("Inside cnt block");
                             		String s=cell.getStringCellValue();
+
+                            		System.out.println("In else"+cnt+" "+s);
+                                	
                             		//System.out.println(s);
-                            		
+                            		if(s==null || s.equals(" ")||s.equals(""))
+                            			al.add("null");
+                            		else
                             			al.add(s);
                             		
                             	//System.out.println(al);
@@ -113,6 +128,12 @@ class ReadExcelFileToList {
                             break;
                             
                         
+                            
+                        default:
+                        	String ss1=cell.getStringCellValue();
+                        	System.out.println("In default="+ss1);
+                            
+                        
                         }	
                        System.out.println(al);
                     
@@ -126,16 +147,17 @@ class ReadExcelFileToList {
                     if(cnt>0 && val!=null){
                         b[i]=new Books();
                         b[i].setBookId(val);
-                        b[i].setAuthor(al.get(1));
-                        b[i].setPublication(al.get(2));
-                        b[i].setIsbn(al.get(3));
-                        b[i].setLanguage(al.get(4));
-                        b[i].setQuantity(al.get(5));
-                        b[i].setDateOfPurchase(al.get(6));
-                        b[i].setPrice(al.get(7));
-                        b[i].setImage(al.get(8));
-                        b[i].setNumberOfPages(al.get(9));
-                        b[i].setBindingType(al.get(10));
+                        b[i].setTitle(al.get(1));
+                        b[i].setAuthor(al.get(2));
+                        b[i].setPublication(al.get(3));
+                        b[i].setIsbn(al.get(4));
+                        b[i].setLanguage(al.get(5));
+                        b[i].setQuantity(al.get(6));
+                        b[i].setDateOfPurchase(al.get(7));
+                        b[i].setPrice(al.get(8));
+                        b[i].setImage(al.get(9));
+                        b[i].setNumberOfPages(al.get(10));
+                        b[i].setBindingType(al.get(11));
                         System.out.println(b[i].getBookId());
                         i++;
                         }

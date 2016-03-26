@@ -6,7 +6,13 @@ import java.util.ArrayList;
 public class Books
 {
 	public static ArrayList<String> al;
-	String bookId,author,publication,isbn,language,quantity,dateOfPurchase,price,image,numberOfPages,bindingType;
+	String bookId,title,author,publication,isbn,language,quantity,dateOfPurchase,price,image,numberOfPages,bindingType;
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public Books()
 	{
 		
