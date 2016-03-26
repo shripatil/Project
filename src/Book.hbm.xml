@@ -4,7 +4,7 @@
           "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
           <hibernate-mapping>
-          <class name="classes" table="Books">
+          <class name="com.td.classes.Books" table="Books">
           <id name="bookId">
           <generator class="assigned"></generator>
           </id>
