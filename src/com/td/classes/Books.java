@@ -86,7 +86,11 @@ public class Books
 	public Books(ArrayList<String> al) {
 		Books.al=al;
 	}
-
+@Override
+public String toString() {
+	// TODO Auto-generated method stub
+	return bookId+" "+title+" "+author+" "+publication+" "+isbn+" "+language+" "+quantity+" "+dateOfPurchase+" "+price+" "+image+" "+numberOfPages+" "+bindingType;
+}
 }
 /*
 @Entity
