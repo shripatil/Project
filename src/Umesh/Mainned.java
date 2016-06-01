@@ -70,7 +70,7 @@ public class Mainned {
 		
 		
 		Configuration cfg=new Configuration();
-		cfg.configure("hibernate.cfg.xml");
+		//cfg.configure("hibernate.cfg.xml");
 		SessionFactory factory=cfg.buildSessionFactory();
 		Session s=factory.openSession();
 		Transaction t=s.beginTransaction();
