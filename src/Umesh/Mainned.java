@@ -1,6 +1,7 @@
 package Umesh;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 
 import org.hibernate.Session;
@@ -22,11 +23,11 @@ public class Mainned {
 		
 		System.out.println();
 		System.out.println();
-		
+
 		ArrayList <String> dbListBooks = new ArrayList <String>();
-		Books b[]=new Books[33];
+		Books b[]=new Books[15];
 		int i=0,cnt=0;
-		for (int row =0 ; row < r ; row ++) {
+		for (int row =0 ; row < r && i<b.length; row ++) {
 			NewClass.setCurrentRow(row);
 			String finals = "";
 			for ( int col =0; col < c ; col ++) {
@@ -40,7 +41,9 @@ public class Mainned {
 			if(cnt>0){
 				String id=dbListBooks.get(0);
 				if(id!=null && !id.equals(" ")){
-			b[i]=new Books();
+			try{
+				b[i]=new Books();
+			
 		    b[i].setBookId(id);
             b[i].setTitle(dbListBooks.get(1));
             b[i].setAuthor(dbListBooks.get(2));
@@ -54,6 +57,10 @@ public class Mainned {
             b[i].setNumberOfPages(dbListBooks.get(10));
             b[i].setBindingType(dbListBooks.get(11));
             i++;
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 				}
 			}
 			cnt++;
@@ -65,12 +72,12 @@ public class Mainned {
 		
 		for(int j=0;j<b.length;j++)
 		{
-			System.out.println(b[j]);
+			System.out.println(j+" "+b[j]);
 		}
 		
 		
 		Configuration cfg=new Configuration();
-		//cfg.configure("hibernate.cfg.xml");
+		cfg.configure("hibernate.cfg.xml");
 		SessionFactory factory=cfg.buildSessionFactory();
 		Session s=factory.openSession();
 		Transaction t=s.beginTransaction();
@@ -79,9 +86,10 @@ public class Mainned {
 		
 		for(int k=0;k<b.length;k++)
 		{
-			if(b[k]!=null){
+			//if(b[k]!=null){
 			s.persist(b[k]);
-			}
+			
+			//}
 			
 			
 		}

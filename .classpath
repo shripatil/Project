@@ -18,7 +18,7 @@
 	<classpathentry kind="lib" path="C:/Git Project/Project/src/Hibernate Jar/cglib-2.1.3.jar"/>
 	<classpathentry kind="lib" path="C:/Git Project/Project/src/Hibernate Jar/commons-collections-2.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Git Project/Project/src/Hibernate Jar/commons-logging-1.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Git Project/Project/src/Hibernate Jar/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Git Project/Project/src/Hibernate Jar/dom4j-1.6.1.jar" sourcepath="C:/Java_Prgs/Nayana/Hdemos/Jar Files/dom4j-1.5.2.jar"/>
 	<classpathentry kind="lib" path="C:/Git Project/Project/src/Hibernate Jar/ehcache-1.2.3.jar"/>
 	<classpathentry kind="lib" path="C:/Git Project/Project/src/Hibernate Jar/ejb3-persistence.jar"/>
 	<classpathentry kind="lib" path="C:/Git Project/Project/src/Hibernate Jar/hibernate3.jar"/>
