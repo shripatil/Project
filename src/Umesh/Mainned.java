@@ -15,7 +15,7 @@ public class Mainned {
 	
 	public static void main(String[] args) {
 
-		NewClass.path="C:\\Git Project\\catalogueNEW.xlsx";
+		NewClass.path="/home/intern4/Downloads/catalogue1.xlsx";
 		int r=NewClass.getSheet("Sheet1").getRows(); // As per my opinion these values should be fixed.
 		int c=NewClass.getSheet("Sheet1").getCols();
 		NewClass.setCurrentRow(0);
